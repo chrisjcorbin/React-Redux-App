@@ -1,24 +1,28 @@
+import axios from "axios"
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PokemonList from "./components/PokemonList"
+import styles from "styled-components"
+
+const PokemonHeader = styles.div`
+h2 {
+  color: rebeccapurple;
+  text-shadow: 1px 1px black;
+}
+`;
 
 function App() {
+  axios
+    .get("https://pokeapi.co/api/v2/pokemon")
+    .then((res) => {
+    })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PokemonHeader>
+        <h2>Pokemon List</h2>
+      </PokemonHeader>
+      <PokemonList />
     </div>
   );
 }
